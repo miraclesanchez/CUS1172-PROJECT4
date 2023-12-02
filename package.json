@@ -1,0 +1,24 @@
+{
+  "name": "cus1172-project4",
+  "version": "1.0.0",
+  "description": "Back-end Web Applications for sharing videos.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miraclesanchez/CUS1172-PROJECT4.git"
+  },
+  "author": "Miracle Sanchez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miraclesanchez/CUS1172-PROJECT4/issues"
+  },
+  "homepage": "https://github.com/miraclesanchez/CUS1172-PROJECT4#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "pug": "^3.0.2"
+  }
+}
