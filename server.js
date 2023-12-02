@@ -20,12 +20,18 @@ app.set('views', path.join(__dirname, 'Views'));
 
 
 //------------------------------------------------------------------//
+                        //login module
+var loginPage = require('./Components/login');
+app.use('/login', loginPage);
+
+//------------------------------------------------------------------//
+
 //intitial module
 var startPage = require('./Components/initial');
 app.use('/', startPage);
 
 //------------------------------------------------------------------//
-//registration modules
+                //registration modules
 
 //require the module
 var registration = require ('./Components/registration');
@@ -36,12 +42,29 @@ var registration = require ('./Components/registration');
 app.use('/register', registration);
 
 //------------------------------------------------------------------//
-//dashboard module
+                        //dashboard module
 var dashboard = require ('./Components/videoDashboard')
 
 app.use('/videos', dashboard);
 //------------------------------------------------------------------//
+            //code for handling form information
 
+//registers the middleware to process header information and form data
+app.use(express.json());
+
+//for parsing the application
+app.use(express.urlencoded({extended:true}));
+
+//here "username" and "password" are the names of the form fields from the login.pug
+app.post ('/login', (req,res)=>{
+    const {username, password} = req.body;
+
+    ///here we would verify the credentials
+
+    res.send(`Thank you for logging in ${username}`);
+});
+
+//------------------------------------------------------------------//
 app.listen(3000, function () {
     console.log('Service running on port 3000!');
 });
