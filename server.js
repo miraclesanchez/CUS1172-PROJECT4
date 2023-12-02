@@ -3,6 +3,27 @@ var express = require('express');
 //create an instance of the express library
 var app = express();
 
+//path allows you to build paths to your files
+const path = require('path');
+
+//------------------------------------------------------------------//
+
+            //these two are configuration settings//
+
+//setting the view engine to pug allows you to later use res.render() without having to specify that it is a pug file
+// and it lets the app know that you will be using Pug to render all views
+app.set('view engine', 'pug');
+
+//dirname ensures that the correct path is set
+//allows the express engine to know where to look for your pug files
+app.set('views', path.join(__dirname, 'Views'));
+
+
+//------------------------------------------------------------------//
+//intitial module
+var startPage = require('./Components/initial');
+app.use('/', startPage);
+
 //------------------------------------------------------------------//
 //registration modules
 
@@ -20,9 +41,14 @@ var dashboard = require ('./Components/videoDashboard')
 
 app.use('/videos', dashboard);
 //------------------------------------------------------------------//
+
 app.listen(3000, function () {
     console.log('Service running on port 3000!');
 });
+
+//------------------------------------------------------------------//
+
+
 
 
 
