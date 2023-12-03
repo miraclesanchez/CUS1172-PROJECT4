@@ -6,7 +6,7 @@ router.get('/', (req,res) =>{
         action_url : '/login',
     }
     res.render('login.pug', {
-        title: "Hello"
+        title: "Video Community"
     })
 });
 

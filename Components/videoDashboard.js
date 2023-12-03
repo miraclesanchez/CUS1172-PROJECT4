@@ -2,8 +2,10 @@ const express = require ('express');
 const router = express.Router();
 
 
-router.get('/dashboard', function(req,res){
-    res.send();
+router.get('/', (req,res) =>{
+    res.render('dashboard.pug', {
+        title: "Video Community"
+    })
 });
 
 module.exports = router;

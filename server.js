@@ -18,17 +18,15 @@ app.set('view engine', 'pug');
 //allows the express engine to know where to look for your pug files
 app.set('views', path.join(__dirname, 'Views'));
 
+//------------------------------------------------------------------//
+                    //static resources (css, images)
+
+app.use('/resource', express.static('Resources'));
 
 //------------------------------------------------------------------//
                         //login module
 var loginPage = require('./Components/login');
-app.use('/login', loginPage);
-
-//------------------------------------------------------------------//
-
-//intitial module
-var startPage = require('./Components/initial');
-app.use('/', startPage);
+app.use('/', loginPage);
 
 //------------------------------------------------------------------//
                 //registration modules
@@ -45,7 +43,7 @@ app.use('/register', registration);
                         //dashboard module
 var dashboard = require ('./Components/videoDashboard')
 
-app.use('/videos', dashboard);
+app.use('/dashboard', dashboard);
 //------------------------------------------------------------------//
             //code for handling form information
 
@@ -56,12 +54,12 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 //here "username" and "password" are the names of the form fields from the login.pug
-app.post ('/login', (req,res)=>{
+app.post ('/', (req,res)=>{
     const {username, password} = req.body;
 
     ///here we would verify the credentials
 
-    res.send(`Thank you for logging in ${username}`);
+    res.redirect('/dashboard');
 });
 
 //------------------------------------------------------------------//
@@ -70,9 +68,3 @@ app.listen(3000, function () {
 });
 
 //------------------------------------------------------------------//
-
-
-
-
-
-
