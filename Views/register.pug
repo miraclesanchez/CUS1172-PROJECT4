@@ -1,0 +1,32 @@
+html 
+    head 
+        title #{title}
+        link(rel="stylesheet", href="/resource/style.css")
+    body 
+        .container
+            .middle 
+                .panel.signup
+                    form(action="") 
+                    img#logo(src="/resource/images/logo.jpg", alt="logo")
+                    input.input-box(type="text" 
+                    name = contactInfo
+                    required
+                    placeholder="Mobile Number or Email") 
+                    input.input-box(type="text"
+                    name= name
+                    required
+                    placeholder="Full Name")
+                    input.input-box(type="text"
+                    name= username
+                    required
+                    placeholder="Username")
+                    input.input-box(type="text"
+                    name= password
+                    required
+                    placeholder="Password")
+                    input.button(type ="submit"
+                    name=signup
+                    value="Sign Up")
+                .panel.logIn
+                    p Have an account?
+                    a(href="") Log in 

@@ -1,12 +1,8 @@
 const express = require ('express');
 const router = express.Router();
 
-router.get('/registration', function(req,res){
-    res.send();
-});
-
-router.get('/login', function(req,res){
-    res.send();
+router.get('/', function(req,res){
+    res.render('register.pug');
 });
 
 module.exports = router;

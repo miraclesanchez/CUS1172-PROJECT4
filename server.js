@@ -35,8 +35,6 @@ app.use('/', loginPage);
 var registration = require ('./Components/registration');
 
 //both the login and registration routes will be available here
-// /register/login/
-// /register/registration/
 app.use('/register', registration);
 
 //------------------------------------------------------------------//

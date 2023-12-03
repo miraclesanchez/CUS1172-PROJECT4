@@ -6,7 +6,7 @@
 }
 
 body{
-    background-color: #fafafa;
+    background-color: #073656;    
     font-family: Helvetica, sans-serif;
     min-height: 100vh;
     display: flex;
@@ -41,10 +41,15 @@ body{
     display: flex;
 }
 
-.register {
+.register, .logIn {
     justify-content: center;
     gap: 5px;
     font-size: 14px;
+}
+
+.signup{
+    display: flex;
+    flex-direction: column;
 }
 
 .register a {
