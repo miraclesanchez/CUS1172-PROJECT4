@@ -52,14 +52,14 @@ body{
     flex-direction: column;
 }
 
-.register a {
+.register a, .logIn a {
     color: #3bb1ff;
     text-decoration: none;
     font-weight: 600;
 }
 
 .login{
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 }
 

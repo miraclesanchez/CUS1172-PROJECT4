@@ -1,32 +1,38 @@
 html 
     head 
         title #{title}
-        link(rel="stylesheet", href="/resource/style.css")
+        block css
+            link(rel="stylesheet", href="/resource/style.css")
+        block script
+            script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+            script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js")
+            script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js")
+            script(src="/resource/script.js") 
     body 
         .container
             .middle 
                 .panel.signup
-                    form(action="") 
-                    img#logo(src="/resource/images/logo.jpg", alt="logo")
-                    input.input-box(type="text" 
-                    name = contactInfo
-                    required
-                    placeholder="Mobile Number or Email") 
-                    input.input-box(type="text"
-                    name= name
-                    required
-                    placeholder="Full Name")
-                    input.input-box(type="text"
-                    name= username
-                    required
-                    placeholder="Username")
-                    input.input-box(type="text"
-                    name= password
-                    required
-                    placeholder="Password")
-                    input.button(type ="submit"
-                    name=signup
-                    value="Sign Up")
+                    form(action="/auth/register" id='registrationForm' method='POST') 
+                        img#logo(src="/resource/images/logo.jpg", alt="logo")
+                        input.input-box(type="text" 
+                        name = 'email'
+                        required
+                        placeholder="Email") 
+                        input.input-box(type="text"
+                        name= 'name'
+                        required
+                        placeholder="Full Name")
+                        input.input-box(type="text"
+                        name= 'username'
+                        required
+                        placeholder="Username")
+                        input.input-box(type="password"
+                        name= 'password'
+                        required
+                        placeholder="Password")
+                        input.button(type ="submit"
+                        name='signup'
+                        value="Sign Up")
                 .panel.logIn
                     p Have an account?
-                    a(href="") Log in 
+                    a(href="/auth/login") Log in 

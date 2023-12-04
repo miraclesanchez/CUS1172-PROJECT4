@@ -24,26 +24,7 @@ app.set('views', path.join(__dirname, 'Views'));
 app.use('/resource', express.static('Resources'));
 
 //------------------------------------------------------------------//
-                        //login module
-var loginPage = require('./Components/login');
-app.use('/', loginPage);
-
-//------------------------------------------------------------------//
-                //registration modules
-
-//require the module
-var registration = require ('./Components/registration');
-
-//both the login and registration routes will be available here
-app.use('/register', registration);
-
-//------------------------------------------------------------------//
-                        //dashboard module
-var dashboard = require ('./Components/videoDashboard')
-
-app.use('/dashboard', dashboard);
-//------------------------------------------------------------------//
-            //code for handling form information
+                       //code for handling form information
 
 //registers the middleware to process header information and form data
 app.use(express.json());
@@ -51,14 +32,25 @@ app.use(express.json());
 //for parsing the application
 app.use(express.urlencoded({extended:true}));
 
+//------------------------------------------------------------------//
+//                         //dashboard module
+// var dashboard = require ('./Components/videoDashboard')
+
+// app.use('/dashboard', dashboard);
+//------------------------------------------------------------------//
+                //login module
+ var api_routes = require('./Components/Routes');
+ app.use('/auth', api_routes);
+
+
 //here "username" and "password" are the names of the form fields from the login.pug
-app.post ('/', (req,res)=>{
-    const {username, password} = req.body;
+// app.post ('/auth/register', (req,res)=>{
+//     const {username, password} = req.body;
+//     console.log(req.body);
+//     ///here we would verify the credentials
 
-    ///here we would verify the credentials
-
-    res.redirect('/dashboard');
-});
+//     res.send(`Thank you for logging in ${username}`)
+// });
 
 //------------------------------------------------------------------//
 app.listen(3000, function () {

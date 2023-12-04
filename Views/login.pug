@@ -2,6 +2,7 @@ html
   head 
     title #{title}
     link(rel="stylesheet", href="/resource/style.css")
+    script(src="/resource/script.js") 
   body 
     .container 
       .left 
@@ -9,12 +10,12 @@ html
       .right 
         .panel.login 
           img#logo(src="/resource/images/logo.jpg", alt="logo")
-          form(action="/")
+          form(action="/auth/login")
             input.input-box(type="text" name="username" required placeholder="Phone number, username, or email")
-            input.input-box(type="text" name="password" required placeholder="Password")
+            input.input-box(type="password" name="password" required placeholder="Password")
             input.button(type="submit" name="login" value="Login" )
         .panel.register
           p Don't have an account?
-          a(href="google.com") Sign up
+          a(href="/auth/register") Sign up
     footer 
       p Copyright &copy Miracle Sanchez 2023
