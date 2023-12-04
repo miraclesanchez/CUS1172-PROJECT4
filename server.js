@@ -32,25 +32,26 @@ app.use(express.json());
 //for parsing the application
 app.use(express.urlencoded({extended:true}));
 
+db_conn = __dirname + "/Database/database.json"
+
+db_schema = {
+    users: []
+}
+
+global.db = require("./Database/fsdb")(db_conn, db_schema);
+
 //------------------------------------------------------------------//
 //                         //dashboard module
 // var dashboard = require ('./Components/videoDashboard')
 
 // app.use('/dashboard', dashboard);
 //------------------------------------------------------------------//
-                //login module
+                //routes
  var api_routes = require('./Components/Routes');
  app.use('/auth', api_routes);
 
-
-//here "username" and "password" are the names of the form fields from the login.pug
-// app.post ('/auth/register', (req,res)=>{
-//     const {username, password} = req.body;
-//     console.log(req.body);
-//     ///here we would verify the credentials
-
-//     res.send(`Thank you for logging in ${username}`)
-// });
+ var video_route = require('./Components/DashboardRoute');
+ app.use('/video',video_route);
 
 //------------------------------------------------------------------//
 app.listen(3000, function () {

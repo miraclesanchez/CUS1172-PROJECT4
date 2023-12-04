@@ -7,7 +7,7 @@ var loadDatabase = (db_connection, schema = {}) =>{
         fs.writeFileSync(db_connection,JSON.stringify(schema));
     }
 
-    let model = require (db_connection);
+    let model = require(db_connection);
 
     //creates the db object
     var db = {

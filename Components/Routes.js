@@ -12,30 +12,55 @@ router.get('/login', (req,res) =>{
     })
 });
 
+router.post('/login', (req,res)=>{
+    const {username, password}=req.body;
+
+    //verify against database
+    //create a new Session object
+    //then redirect to dashboard page
+})
+
 
 //registration routes
 router.get('/register', function(req,res){
     res.render('register.pug');
 });
 
-// router.post ('/register', (req,res)=>{
-//     const {email, name, username, password} = req.body;
-//     console.log(req.body);
-//     ///here we would verify the credentials
-
-//     res.send(`Thank you for logging in ${username}`)
-// });
-
 router.post('/register', (req,res)=>{
-    const {contactInfo, name, username, password} = req.body;
+    const {email, name, username, password} = req.body;
 
     console.log(req.body);
+    
     // if(!contactInfo || !name || !username || !password){
     //     return res.render('register.pug', {errorMessage: 'All fields must be filled in'});
     // }
 
-    res.render('accountCreated.pug');
+    res.redirect(`/add/${email}/${name}/${username}/${password}`)
+    // res.render('accountCreated.pug');
 
 });
+
+db_conn = __dirname + "/../Database/database.json"
+
+db_schema = {
+    users: []
+}
+global.db = require("../Database/fsdb")(db_conn, db_schema);
+
+router.post('/add', (req,res) =>{
+    const {email, name, username, password} = req.body;
+
+    new_user = {
+        Email: email,
+        Name: name,
+        Username: username,
+        Password: password
+    }
+
+    db.model.users.push(new_user);
+    console.log(db.model.users);
+    db.update();
+    res.render('accountCreated.pug');
+})
 
 module.exports = router;

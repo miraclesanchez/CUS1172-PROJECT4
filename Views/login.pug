@@ -10,7 +10,7 @@ html
       .right 
         .panel.login 
           img#logo(src="/resource/images/logo.jpg", alt="logo")
-          form(action="/auth/login")
+          form(action="/auth/login" method="POST")
             input.input-box(type="text" name="username" required placeholder="Phone number, username, or email")
             input.input-box(type="password" name="password" required placeholder="Password")
             input.button(type="submit" name="login" value="Login" )
