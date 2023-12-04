@@ -19,6 +19,7 @@
   "homepage": "https://github.com/miraclesanchez/CUS1172-PROJECT4#readme",
   "dependencies": {
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "pug": "^3.0.2"
   },
   "devDependencies": {

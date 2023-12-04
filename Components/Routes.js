@@ -1,8 +1,21 @@
 var express = require('express');
 const router = express.Router();
+const session = require('express-session')
 
+const fs = require('fs');
+let rawData = fs.readFileSync('./Database/database.json');
+let user = JSON.parse(rawData);
+console.log(user);
 
-//login routes
+db_conn = __dirname + "/../Database/database.json"
+
+db_schema = {
+    users: []
+}
+global.db = require("../Database/fsdb")(db_conn, db_schema);
+
+//-------------------------------------------------------------------------------//
+                                //login routes
 router.get('/login', (req,res) =>{
     model_view = {
         action_url : '/login',
@@ -15,37 +28,56 @@ router.get('/login', (req,res) =>{
 router.post('/login', (req,res)=>{
     const {username, password}=req.body;
 
-    //verify against database
-    //create a new Session object
+    console.log(req.body);
+    const userInfo = db.model.users.find(user => user.Username === username && user.Password === password);
+        if(userInfo){
+            console.log("User found");
+            console.log(userInfo);
+            // req.session.userID = userInfo.Name;
+            // req.session.userEmail = userInfo.Email;
+            // req.session.isAthenticated = true;
+            console.log('session recorded');
+            res.redirect('/video/dashboard');
+        }else{
+            console.log("User not found");
+                    res.redirect('/auth/login?error=InvalidCredentials');
+
+        }
+        
+    })
+
+    router.get('/logout', (req,res) =>{
+        req.session.destroy((err)=>{
+            if(err){
+                console.log(err);
+                res.send(err)
+            }else{
+                res.send("You are logged out!")
+            }
+        })
+    })
+    
+    //verify against database -- DONE
+    //create a new Session object -- NOT WORKING. WILL COME BACK LATER
     //then redirect to dashboard page
-})
+
+//-------------------------------------------------------------------------------//
+                            //registration routes
 
 
-//registration routes
 router.get('/register', function(req,res){
-    res.render('register.pug');
+    res.render('register.pug', {
+        title: "Register"
+    });
 });
 
 router.post('/register', (req,res)=>{
     const {email, name, username, password} = req.body;
 
     console.log(req.body);
-    
-    // if(!contactInfo || !name || !username || !password){
-    //     return res.render('register.pug', {errorMessage: 'All fields must be filled in'});
-    // }
 
     res.redirect(`/add/${email}/${name}/${username}/${password}`)
-    // res.render('accountCreated.pug');
-
 });
-
-db_conn = __dirname + "/../Database/database.json"
-
-db_schema = {
-    users: []
-}
-global.db = require("../Database/fsdb")(db_conn, db_schema);
 
 router.post('/add', (req,res) =>{
     const {email, name, username, password} = req.body;
@@ -62,5 +94,6 @@ router.post('/add', (req,res) =>{
     db.update();
     res.render('accountCreated.pug');
 })
+//-------------------------------------------------------------------------------//
 
 module.exports = router;
