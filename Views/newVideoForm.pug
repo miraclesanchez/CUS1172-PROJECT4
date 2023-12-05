@@ -1,0 +1,22 @@
+html
+    head
+    link(rel="stylesheet", href="/resource/style.css") 
+    body 
+        .menu 
+            a(href="/auth/login") LogIn
+            a(href="/video/dashboard") Dashboard
+            a(href="/video/new_video") Upload
+        .border-line
+        h3 #{recieved}
+        .VideoFormcontainer
+            .videoExample 
+                h2 Video Submission Form
+                iframe(src="https://www.youtube.com/embed/Mxkg3qLIPC8?si=hYM35MdTs_WqmyBN", frameborder="0", title="Final Match")  
+            .subForm
+                form(action="/video/new_video", method="post") 
+                    .videoURL
+                        input(type="url" name ="URL" placeholder="Video URL" required)
+                    .title
+                        input(type="text" name= "title" placeholder="Video Title" required)
+                    .subBut
+                    input(type="submit" value = "Submit Video") 

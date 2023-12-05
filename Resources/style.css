@@ -2,7 +2,8 @@
     margin: 0;
     padding:0;
     box-sizing: border-box;
-    /* border: 1px solid red; */
+    /* border: 5px solid rgb(23, 21, 21); */
+
 }
 
 body{
@@ -12,6 +13,33 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding-top: 20px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.menu a {
+    text-decoration: none;
+    color: #d5d9ee; /* Set the desired text color */
+    font-size: 16px; /* Set the desired font size */
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
+.border-line {
+    position: absolute;
+    top: 70px;
+    left: 20px;
+    width: 100%;
+    height: 2px;  /* Adjust the height of the border line */
+    background-color: #3bb1ff;  /* Set the desired color of the border line */
 }
 
 .container{
@@ -28,9 +56,29 @@ body{
     flex-grow: 1;
 }
 
-.accContainer h1, h2{
+.accContainer h1, h2, h3{
     color: #dedede;
 }
+
+.VideoFormcontainer {
+    border-radius: 3px;
+    display: flex;
+    padding: 25px 35px;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    gap: 30px;
+}
+.videoURL, .title{
+    padding: 10px 2px;
+    width: 100%;
+}
+
+.videoExample iframe {
+    padding-top: 20px;
+}
+
+
 
 #soccer{
     width: 300px;

@@ -37,7 +37,7 @@ router.post('/login', (req,res)=>{
             // req.session.userEmail = userInfo.Email;
             // req.session.isAthenticated = true;
             console.log('session recorded');
-            res.redirect('/video/dashboard');
+            res.redirect('/video/new_video');
         }else{
             console.log("User not found");
                     res.redirect('/auth/login?error=InvalidCredentials');
