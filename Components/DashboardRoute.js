@@ -14,18 +14,28 @@ db_schema = {
 global.db = require("../Database/fsdb")(db_conn, db_schema);
 
 router.get('/dashboard', (req, res) => {
-    res.render('dashboard.pug', {
-        title: 'SoccerWorld',
-        videos: videos,
-    });
+    if (!req.session.isAuthenticated) {
+        res.send('<script>alert("You must login to access this content"); window.location.href = "/auth/login";</script>');
+    } else {
+        // Render dashboard for authenticated user
+        res.render('dashboard.pug', {
+            title: 'SoccerWorld',
+            videos: videos,
+            isAuthenticated: req.session.isAuthenticated || false,
+            username: req.session.userID
+        });
+    }
+    
 });
 
 router.get('/new_video', (req,res)=>{
-    //verify if the user is logged in
-    //then 
+    if (!req.session.isAuthenticated) {
+        res.send('<script>alert("You must login to access this content"); window.location.href = "/auth/login";</script>');
+    } else { 
     res.render('newVideoForm.pug', {
         title: "SoccerWorld"
     });
+}
 })
 
 router.post('/new_video', (req,res)=>{

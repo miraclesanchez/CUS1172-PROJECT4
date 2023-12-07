@@ -33,7 +33,7 @@ html
                                 <iframe src="${element.url}" frameborder="0" title="Final Match"></iframe> 
                                 <br>
                                 <div id="postedBy">
-                                <label id="user"> Posted by: </label>
+                                <label id="user"> Posted by:${element.username} </label>
                                 </div>
 
                             </div> 
@@ -46,9 +46,9 @@ html
     body 
         img#logo.top(src="/resource/images/logo.jpg", alt="logo")
         .menu 
-                a(href="/auth/login") LogIn
-                a(href="/video/dashboard") Dashboard
-                a(href="/video/new_video") Upload
+            a(href="/auth/logout") Log Out
+            a(href="/video/dashboard") Dashboard
+            a(href="/video/new_video") Upload
         .border-line
         .message
             h3 Here you can view all videos in the database!

@@ -3,7 +3,7 @@ var express = require('express');
 //create an instance of the express library
 var app = express();
 
-var session = require('express-session')
+var sessionMiddleware = require('./Components/session');
 
 //path allows you to build paths to your files
 const path = require('path');
@@ -43,23 +43,17 @@ db_schema = {
 global.db = require("./Database/fsdb")(db_conn, db_schema);
 
 //------------------------------------------------------------------//
-                //routes
+               //Session Middleware
+app.use(sessionMiddleware);
+//------------------------------------------------------------------//
+//routes
  var api_routes = require('./Components/Routes');
  app.use('/auth', api_routes);
 
  var video_route = require('./Components/DashboardRoute');
  app.use('/video',video_route);
-
 //------------------------------------------------------------------//
-            //Session Middleware
-app.use(session({
-    secret: 'Some screte code',
-    saveUninitialized: true,
-    resave: false,
-    cookie: {}
 
-}))
-//------------------------------------------------------------------//
 app.listen(3000, function () {
     console.log('Service running on port 3000!');
 });

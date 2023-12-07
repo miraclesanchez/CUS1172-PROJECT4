@@ -17,7 +17,6 @@ var loadDatabase = (db_connection, schema = {}) =>{
             fs.writeFileSync(db_connection,JSON.stringify(model));
         },
         addCollection : (collection) => {
-            model['collection'] = [];
         }
     }
     return db;

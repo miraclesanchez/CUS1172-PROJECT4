@@ -1,10 +1,1 @@
-{
-    "users": [
-        {
-            "Email": "hello@hello",
-            "Name": "Miracle",
-            "Username": "Sanchez",
-            "Password": "12345"
-        }
-    ]
-}
+{"users":[{"Email":"hello@hello","Name":"sanchez","Username":"Sanchez","Password":"12345"},{"Email":"jonSnow@stark.com","Name":"Jon Snow","Username":"jonSnow","Password":"2343"}]}
