@@ -46,7 +46,8 @@ router.post('/new_video', (req,res)=>{
 
     new_video = {
         url : URL,
-        title: title
+        title: title,
+        username: req.session.userID,
     }
 
     db.model.videos.push(new_video);
