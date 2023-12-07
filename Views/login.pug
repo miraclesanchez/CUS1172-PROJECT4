@@ -3,19 +3,23 @@ html
     title #{title}
     link(rel="stylesheet", href="/resource/style.css") 
   body 
-    .menu 
+    img#logo.top(src="/resource/images/logo.jpg", alt="logo")
+    .menu
             a(href="/auth/login") LogIn
             a(href="/video/dashboard") Dashboard
             a(href="/video/new_video") Upload
     .border-line
+    .message 
+      h3 Welcome to SoccerWorld where you can upload and watch clips from the 2022 FIFA World Cup
     .container 
       .left 
         img#soccer(src="/resource/images/soccer.jpeg", alt="soccer")
       .right 
-        .panel.login 
+        .panel.login
+          h3 SoccerWorld  
           img#logo(src="/resource/images/logo.jpg", alt="logo")
           form(action="/auth/login" method="POST")
-            input.input-box(type="text" name="username" required placeholder="Phone number, username, or email")
+            input.input-box(type="text" name="username" required placeholder="Username")
             input.input-box(type="password" name="password" required placeholder="Password")
             input.button(type="submit" name="login" value="Login" )
         .panel.register

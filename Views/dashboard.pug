@@ -1,11 +1,55 @@
 html 
     head 
         title #{title}
-        link(rel="stylesheet", href="/resource/style.css") 
+        link(rel="stylesheet", href="/resource/style.css")
+        script.
+            document.addEventListener('DOMContentLoaded', () =>{
+                console.log('DOMContentLoaded event fired');
+                get_data();
+            });
+
+            async function get_data () {
+                try{
+                    const response = await fetch('http://localhost:3000/video/database');
+                    const data = await response.json();
+                    console.log('Response data:',data);
+                    updateDOM(data);
+                } catch (error) {
+                    console.error("Error fetching data:", error);
+                }
+            }
+
+            let updateDOM =(data) =>{
+                console.log("hello");
+
+                data.videos.forEach(element => {
+                    const video = document.createElement('div');
+                    let video_html = `
+                            <div id="wholeThing">
+                                <div id="label">
+                                    <label id="title"> Title: ${element.title} </label>
+                                </div>
+                                <br>
+                                <iframe src="${element.url}" frameborder="0" title="Final Match"></iframe> 
+                                <br>
+                                <div id="postedBy">
+                                <label id="user"> Posted by: </label>
+                                </div>
+
+                            </div> 
+                            <br>
+                        `;
+                    video.innerHTML = video_html;
+                    document.querySelector('#dashboard').appendChild(video);
+                });
+            }
     body 
-    .menu 
-            a(href="/auth/login") LogIn
-            a(href="/video/dashboard") Dashboard
-            a(href="/video/new_video") Upload
-    .border-line
-        p HELLO
+        img#logo.top(src="/resource/images/logo.jpg", alt="logo")
+        .menu 
+                a(href="/auth/login") LogIn
+                a(href="/video/dashboard") Dashboard
+                a(href="/video/new_video") Upload
+        .border-line
+        .message
+            h3 Here you can view all videos in the database!
+        #dashboard

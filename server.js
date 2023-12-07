@@ -21,7 +21,7 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'Views'));
 
 //------------------------------------------------------------------//
-                    //static resources (css, images)
+                    //static resources (css, images, js)
 
 app.use('/resource', express.static('Resources'));
 

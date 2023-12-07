@@ -4,7 +4,6 @@ var router = express.Router();
 const fs = require('fs');
 let rawData = fs.readFileSync('./Database/videoDB.json');
 let videos = JSON.parse(rawData);
-console.log(videos);
 
 db_conn = "/Users/miraclesanchez/cus1172/CUS1172-PROJECT4/Database/videoDB.json"
 
@@ -14,9 +13,12 @@ db_schema = {
 
 global.db = require("../Database/fsdb")(db_conn, db_schema);
 
-router.get('/dashboard', (req,res)=>{
-    res.send(`hello`);
-})
+router.get('/dashboard', (req, res) => {
+    res.render('dashboard.pug', {
+        title: 'Dashboard',
+        videos: videos,
+    });
+});
 
 router.get('/new_video', (req,res)=>{
     //verify if the user is logged in
@@ -25,9 +27,8 @@ router.get('/new_video', (req,res)=>{
 })
 
 router.post('/new_video', (req,res)=>{
-    res.render('newVideoForm.pug', {
-        recieved: "Video Submitted"
-    });
+    res.render('newVideoForm.pug',{
+    title: "SoccerWorld"});
 
     const {URL, title} = req.body;
 
@@ -37,7 +38,12 @@ router.post('/new_video', (req,res)=>{
     }
 
     db.model.videos.push(new_video);
-    console.log(db.model.users);
     db.update();
- })   
+ });   
+
+router.get('/database', (req, res) =>{
+    res.json({videos: db.model.videos});
+})
+
+
 module.exports = router

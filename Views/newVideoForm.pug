@@ -1,22 +1,35 @@
 html
     head
+    title #{title}
     link(rel="stylesheet", href="/resource/style.css") 
+    script.
+        document.addEventListener('DOMContentLoaded', function () {
+        const formElement = document.querySelector('.form');
+
+        formElement.addEventListener('submit', function (event) {
+
+            alert("Video Submitted");
+        });
+        });
+
     body 
+        img#logo.top(src="/resource/images/logo.jpg", alt="logo")
         .menu 
             a(href="/auth/login") LogIn
             a(href="/video/dashboard") Dashboard
             a(href="/video/new_video") Upload
-        .border-line
-        h3 #{recieved}
+        .border-line 
+        .message 
+                h3 When entering the URL make sure you are using Youtube's Embedded link!
         .VideoFormcontainer
             .videoExample 
                 h2 Video Submission Form
                 iframe(src="https://www.youtube.com/embed/Mxkg3qLIPC8?si=hYM35MdTs_WqmyBN", frameborder="0", title="Final Match")  
             .subForm
-                form(action="/video/new_video", method="post") 
+                form.form(action="/video/new_video", method="post") 
                     .videoURL
-                        input(type="url" name ="URL" placeholder="Video URL" required)
+                        input.input_box(type="url" name ="URL" placeholder="Video URL" required)
                     .title
-                        input(type="text" name= "title" placeholder="Video Title" required)
+                        input.input_box(type="text" name= "title" placeholder="Video Title" required)
                     .subBut
-                    input(type="submit" value = "Submit Video") 
+                    input.but(type="submit" value = "Submit Video") 

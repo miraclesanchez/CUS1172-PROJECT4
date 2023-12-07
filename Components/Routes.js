@@ -5,7 +5,6 @@ const session = require('express-session')
 const fs = require('fs');
 let rawData = fs.readFileSync('./Database/database.json');
 let user = JSON.parse(rawData);
-console.log(user);
 
 db_conn = __dirname + "/../Database/database.json"
 
@@ -21,15 +20,16 @@ router.get('/login', (req,res) =>{
         action_url : '/login',
     }
     res.render('login.pug', {
-        title: "Video Community"
+        title: "SoccerWorld"
     })
 });
 
 router.post('/login', (req,res)=>{
     const {username, password}=req.body;
-
+    console.log(user);
+    console.log("hell0")
     console.log(req.body);
-    const userInfo = db.model.users.find(user => user.Username === username && user.Password === password);
+    const userInfo = user["users"].find(user => user.Username === username && user.Password === password)
         if(userInfo){
             console.log("User found");
             console.log(userInfo);
@@ -49,7 +49,6 @@ router.post('/login', (req,res)=>{
     router.get('/logout', (req,res) =>{
         req.session.destroy((err)=>{
             if(err){
-                console.log(err);
                 res.send(err)
             }else{
                 res.send("You are logged out!")
@@ -73,9 +72,6 @@ router.get('/register', function(req,res){
 
 router.post('/register', (req,res)=>{
     const {email, name, username, password} = req.body;
-
-    console.log(req.body);
-
     res.redirect(`/add/${email}/${name}/${username}/${password}`)
 });
 

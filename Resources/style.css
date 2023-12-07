@@ -14,15 +14,22 @@ body{
     flex-direction: column;
     align-items: center;
 }
+#logo.top{
+    width : 70px;
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    border-radius: 5px;
 
+}
 .menu {
     display: flex;
     flex-direction: row;
     gap: 20px;
     padding-top: 20px;
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 12px;
+    left: 90px;
 }
 .menu a {
     text-decoration: none;
@@ -47,6 +54,7 @@ body{
     align-items: center;
     justify-content: center;
     flex-grow: 1;
+    margin-top: 80px;
 }
 .accContainer{
     display: flex;
@@ -56,7 +64,7 @@ body{
     flex-grow: 1;
 }
 
-.accContainer h1, h2, h3{
+h1, h2, label{
     color: #dedede;
 }
 
@@ -68,17 +76,71 @@ body{
     justify-content: center;
     flex-grow: 1;
     gap: 30px;
+
 }
-.videoURL, .title{
-    padding: 10px 2px;
+
+.VideoFormcontainer .subForm {
+    padding: 30px;
+
+}
+
+form {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+.input_box{
+    width: 100%;
+    padding: 5px 15px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    border: solid 2px #dedede;
+
+}
+.input_box::placeholder{
+    color: #8a8a8a;
+    font-size: 14px;
+}
+
+.but {
+    width: 100%;
+    padding: 4px 10px;
+    background-color: #d5d9ee;
+    border-radius: 5px;
+    margin: 7px 0;
+}
+
+.but:hover{
+    background-color: #b2dffc
+    
+}
+
+#dashboard {
+    display: flex;
+    flex-direction: column;
+    margin-top: 150px;
+}
+
+#dashboard #label, #postedBy{
+    border: solid 2px #6fbaec;
+    padding-top: 20px;
+}
+
+#dashboard #wholeThing{
+    margin-top: 20px;
+    border-radius: 3px;
+    border: solid 2px #3bb1ff;
+}
+
+#dashboard #title, #user{
+ padding-left: 25%;
+}
+
 
 .videoExample iframe {
     padding-top: 20px;
 }
-
-
 
 #soccer{
     width: 300px;
@@ -100,6 +162,11 @@ body{
     display: flex;
 }
 
+.panel h3{
+    font-family: 'Courier New', Courier, monospace;
+    color: #073656;
+}
+
 .register, .logIn {
     justify-content: center;
     gap: 5px;
@@ -118,13 +185,6 @@ body{
 }
 
 .login{
-    flex-direction: column;
-    align-items: center;
-}
-
-form {
-    width: 100%;
-    display: flex;
     flex-direction: column;
     align-items: center;
 }
@@ -162,6 +222,18 @@ form {
 .button:hover {
     background-color: #3bb1ff;
     font-weight: 600;
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 15%;
+    background-color:  #6fbaec;
+    color: #073656;
+    border-radius: 4px;
+    padding: 10px 10px;
+    font-size: 14px;
 }
 
 footer p{
