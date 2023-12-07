@@ -15,7 +15,7 @@ global.db = require("../Database/fsdb")(db_conn, db_schema);
 
 router.get('/dashboard', (req, res) => {
     res.render('dashboard.pug', {
-        title: 'Dashboard',
+        title: 'SoccerWorld',
         videos: videos,
     });
 });
@@ -23,7 +23,9 @@ router.get('/dashboard', (req, res) => {
 router.get('/new_video', (req,res)=>{
     //verify if the user is logged in
     //then 
-    res.render('newVideoForm.pug');
+    res.render('newVideoForm.pug', {
+        title: "SoccerWorld"
+    });
 })
 
 router.post('/new_video', (req,res)=>{
