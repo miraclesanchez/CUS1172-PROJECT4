@@ -7,6 +7,7 @@
       }
     ],
     "routes": [
+      {"handle": "filesystem"},
       { "src": "/auth/login", "dest": "/server.js" },
       { "src": "/auth/(.*)", "dest": "/server.js" },
       { "src": "/video/dashboard", "dest": "/server.js" },
