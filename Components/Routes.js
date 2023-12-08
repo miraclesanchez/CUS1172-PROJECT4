@@ -5,11 +5,9 @@ const fs = require('fs');
 let rawData = fs.readFileSync('./Database/database.json');
 let user = JSON.parse(rawData);
 
-console.log('videos',user)
+console.log('users1',user)
 
-const path = require('path');
-const db_conn = path.join(process.env.PWD, 'Database', 'database.json');
-
+db_conn = "/Users/miraclesanchez/cus1172/CUS1172-PROJECT4/Database/database.json"
 
 db_schema = {
     users: []
@@ -97,7 +95,7 @@ let videos = JSON.parse(rawData);
 
 console.log('videos',videos)
 
-    // db_conn = "/Users/miraclesanchez/cus1172/CUS1172-PROJECT4/Database/database.json"
+    db_conn = "/Users/miraclesanchez/cus1172/CUS1172-PROJECT4/Database/database.json"
 
     db_schema = {
         users: []
