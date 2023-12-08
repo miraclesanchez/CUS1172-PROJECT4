@@ -28,8 +28,20 @@ router.get('/login', (req,res) =>{
 });
 
 router.post('/login', (req,res)=>{
+
+const path = require('path');
+const db_conn2 = path.join(process.env.PWD, 'Database', 'database.json');
+
+db_schema = {
+    users: []
+}
+
+let rawData = fs.readFileSync('./Database/database.json');
+let user1 = JSON.parse(rawData);
+
+global.db = require("../Database/fsdb")(db_conn2, db_schema);
     const {username, password}=req.body;
-    const userInfo = user["users"].find(user => user.Username === username && user.Password === password)
+    const userInfo = user1["users"].find(user => user.Username === username && user.Password === password)
         if(userInfo){
             console.log("User found");
             console.log(userInfo);

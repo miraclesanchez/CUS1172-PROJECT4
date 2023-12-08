@@ -4,9 +4,6 @@ var router = express.Router();
 const fs = require('fs');
 let rawData = fs.readFileSync('./Database/videoDB.json');
 let videos = JSON.parse(rawData);
-
-// db_conn = "/Users/miraclesanchez/cus1172/CUS1172-PROJECT4/Database/videoDB.json"
-
 const path = require('path');
 const db_conn = path.join(process.env.PWD, 'Database', 'videoDB.json');
 
@@ -17,13 +14,24 @@ db_schema = {
 global.db = require("../Database/fsdb")(db_conn, db_schema);
 
 router.get('/dashboard', (req, res) => {
+
+let rawData = fs.readFileSync('./Database/videoDB.json');
+let videos1 = JSON.parse(rawData);
+const path = require('path');
+const db_conn1 = path.join(process.env.PWD, 'Database', 'videoDB.json');
+
+db_schema = {
+    videos: []
+}
+
+global.db = require("../Database/fsdb")(db_conn1, db_schema);
     if (!req.session.isAuthenticated) {
         res.send('<script>alert("You must login to access this content"); window.location.href = "/auth/login";</script>');
     } else {
         // Render dashboard for authenticated user
         res.render('dashboard.pug', {
             title: 'SoccerWorld',
-            videos: videos,
+            videos: videos1,
             isAuthenticated: req.session.isAuthenticated || false,
             username: req.session.userID
         });
