@@ -7,7 +7,7 @@ let user = JSON.parse(rawData);
 
 console.log('videos',user)
 
-db_conn = "./Database/database.json"
+db_conn = './Database/database.json'
 
 db_schema = {
     users: []
