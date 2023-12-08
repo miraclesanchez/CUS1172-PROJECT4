@@ -7,7 +7,9 @@ let user = JSON.parse(rawData);
 
 console.log('videos',user)
 
-db_conn = './Database/database.json'
+const path = require('path');
+const db_conn = path.join(__dirname, 'Database', 'database.json');
+
 
 db_schema = {
     users: []
