@@ -5,10 +5,11 @@ const fs = require('fs');
 let rawData = fs.readFileSync('./Database/database.json');
 let user = JSON.parse(rawData);
 
-console.log('users1',user)
+console.log('videos',user)
 
-db_conn = "/Users/miraclesanchez/cus1172/CUS1172-PROJECT4/Database/database.json"
-
+// db_conn = "/Users/miraclesanchez/cus1172/CUS1172-PROJECT4/Database/database.json"
+const path = require('path');
+const db_conn = path.join(process.env.PWD, 'Database', 'database.json');
 db_schema = {
     users: []
 }
@@ -95,13 +96,12 @@ let videos = JSON.parse(rawData);
 
 console.log('videos',videos)
 
-    db_conn = "/Users/miraclesanchez/cus1172/CUS1172-PROJECT4/Database/database.json"
-
+const db_conn1 = path.join(process.env.PWD, 'Database', 'database.json');
     db_schema = {
         users: []
     }
 
-    global.db = require("../Database/fsdb")(db_conn, db_schema);
+    global.db = require("../Database/fsdb")(db_conn1, db_schema);
 
     const { email, name, username, password } = req.body;
 
