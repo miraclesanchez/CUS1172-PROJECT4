@@ -5,7 +5,7 @@ const fs = require('fs');
 let rawData = fs.readFileSync('./Database/videoDB.json');
 let videos = JSON.parse(rawData);
 
-db_conn = "/Users/miraclesanchez/cus1172/CUS1172-PROJECT4/Database/videoDB.json"
+db_conn = "./Database/videoDB.json"
 
 db_schema = {
     videos: []
