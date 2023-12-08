@@ -10,7 +10,7 @@ html
 
             async function get_data () {
                 try{
-                    const response = await fetch('http://localhost:3000/video/database');
+                    const response = await fetch('/video/database');
                     const data = await response.json();
                     console.log('Response data:',data);
                     updateDOM(data);
@@ -33,7 +33,7 @@ html
                                 <iframe src="${element.url}" frameborder="0" title="Final Match"></iframe> 
                                 <br>
                                 <div id="postedBy">
-                                <label id="user"> Posted by:${element.username} </label>
+                                <label id="user"> Posted by: ${element.username} </label>
                                 </div>
 
                             </div> 

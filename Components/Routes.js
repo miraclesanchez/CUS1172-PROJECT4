@@ -46,7 +46,7 @@ global.db = require("../Database/fsdb")(db_conn2, db_schema);
             console.log("User found");
             console.log(userInfo);
             req.session = req.session || {};  // Ensure session is initialized
-            req.session.userID = userInfo.Name;
+            req.session.userID = userInfo.Username;
             req.session.userEmail = userInfo.Email;
             req.session.isAuthenticated = true;
             console.log('session recorded');
